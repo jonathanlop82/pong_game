@@ -20,11 +20,7 @@ class Ball(Turtle):
             else:
                 self.setheading(225)
 
-        if self.xcor() >= 380:
-            if self.heading() == 315:
-                self.setheading(225)
-            else:
-                self.setheading(135)
+
 
         if self.ycor() <= -280:
             if self.heading() == 225:
@@ -32,8 +28,3 @@ class Ball(Turtle):
             else:
                 self.setheading(45)
 
-        if self.xcor() <= -380:
-            if self.heading() == 225:
-                self.setheading(315)
-            else:
-                self.setheading(45)
