@@ -22,11 +22,11 @@ def run():
     ball = Ball()
 
     score_player_1 = Score("Player 1")
-    score_player_1.goto(200, 270)
+    score_player_1.goto(200, 230)
     score_player_1.write_score()
 
     score_player_2 = Score("Player 2")
-    score_player_2.goto(-200, 270)
+    score_player_2.goto(-200, 230)
     score_player_2.write_score()
 
     game_over = False
@@ -40,24 +40,32 @@ def run():
         screen.onkeypress(paddle_2.move_up, "a")
         screen.onkeypress(paddle_2.move_down, "s")
 
-        if paddle_1.distance(ball) < 90 and ball.xcor() > 330:
+        #Detect collision with the paddle
+        if paddle_1.distance(ball) < 50 and ball.xcor() > 330:
+            ball.move_speed -= 0.01
             if ball.heading() == 315:
                 ball.setheading(225)
             else:
                 ball.setheading(135)
 
-        if paddle_2.distance(ball) < 90 and ball.xcor() < -330:
+        if paddle_2.distance(ball) < 50 and ball.xcor() < -330:
+            ball.move_speed -= 0.01
             if ball.heading() == 225:
                 ball.setheading(315)
             else:
                 ball.setheading(45)
 
+        # Detect the ball pass the paddle
         if ball.xcor() > 350:
+            ball.setheading(135)
             ball.goto(0, 0)
             score_player_2.sum_point()
+            ball.move_speed = 0.08
         elif ball.xcor() < -350:
+            ball.setheading(45)
             ball.goto(0,0)
             score_player_1.sum_point()
+            ball.move_speed = 0.08
 
         if score_player_1.count == 5:
             score_player_1.game_over()

@@ -15,12 +15,12 @@ class Score(Turtle):
 
     def write_score(self):
         self.clear()
-        self.write(f"{self.player_name}: {self.count}", False, align='center', font=('Courier', 20, 'normal'))
+        self.write(f"{self.count}", False, align='center', font=('Courier', 60, 'normal'))
 
     def game_over(self):
         self.clear()
         self.goto(0, 0)
-        self.write(f"{self.player_name} WIN", False, align='center', font=('Courier', 30, 'normal'))
+        self.write(f"{self.player_name} WIN", False, align='center', font=('Courier', 40, 'normal'))
 
     def sum_point(self):
         self.count += 1

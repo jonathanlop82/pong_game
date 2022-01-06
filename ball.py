@@ -9,9 +9,10 @@ class Ball(Turtle):
         self.color("white")
         self.setheading(45)
         self.penup()
+        self.move_speed = 0.08
 
     def move(self):
-        time.sleep(0.04)
+        time.sleep(self.move_speed)
         self.forward(10)
 
         if self.ycor() >= 280:
